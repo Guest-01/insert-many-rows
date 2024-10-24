@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Alert {
+  id          Int       @id @default(autoincrement())
+  result      String?   @db.VarChar(100)
+  timestamp   String?   @db.VarChar(100)
+  inserted_at DateTime? @default(dbgenerated("NOW()"))
+}
